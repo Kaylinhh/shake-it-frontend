@@ -1,0 +1,27 @@
+
+<p-table [columns]="columns" [value]="cocktails" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{ col.header }}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                <div *ngIf="columns.indexOf(col) !== columns.length - 1; else isLastCell">
+                    {{ rowData[col.field] }}
+                </div>
+                <ng-template #isLastCell>
+                    <p-button (onClick)="openEditDialog(rowData[columns[0].field])">
+                        <i class="pi pi-file-edit"></i>
+                    </p-button>
+                    <p-button class="">
+                        <i class="pi pi-trash"></i>
+                    </p-button>
+                </ng-template>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -9,14 +9,18 @@ import { environment } from "src/environments/environment.development";
   })
   export class CocktailService {
 
-    //private _cocktailList$: BehaviorSubject<Ingredient[]> = new BehaviorSubject<Ingredient[]>([]);
+    private _cocktailList$: BehaviorSubject<Cocktail[]> = new BehaviorSubject<Cocktail[]>([]);
 
     constructor(private http: HttpClient){}
 
     getAll(): Observable<Cocktail[]> {
         const url: string = `${environment.apiUrl}${environment.endpoints.getCocktails}`
-        return this.http.get<Cocktail[]>(url)
+        this.http.get<Cocktail[]>(url).subscribe(cocktail => {
+            this._cocktailList$.next(cocktail as Cocktail[])
+        })
+        return this._cocktailList$.asObservable()
     }
+
 
     create(cocktail: Cocktail): Observable<Cocktail> {
         const url: string = `${environment.apiUrl}${environment.endpoints.addCocktail}`

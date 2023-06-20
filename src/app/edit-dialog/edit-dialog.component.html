@@ -3,5 +3,8 @@
 <div class="p-inputgroup">
     <input type="text" pInputText formControlName="label" [value]="cocktail.label"/>
 </div>
+<div *ngFor="let ingredient of cocktail.ingredientList">
+    <input type="text" pInputText [value]="ingredient.label">
+</div>
 <p-button (onClick)="update()">Update</p-button>
 </form>

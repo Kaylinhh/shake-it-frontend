@@ -1,4 +1,6 @@
-
+<div *ngFor="let cocktail of cocktails">
+    {{ cocktail.label}}
+</div>
 <p-table [columns]="columns" [value]="cocktails" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header" let-columns>
         <tr>

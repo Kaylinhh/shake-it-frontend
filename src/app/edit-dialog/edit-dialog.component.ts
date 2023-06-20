@@ -40,23 +40,11 @@ export class EditDialogComponent implements OnInit {
     })
   }
 
-  // initIngredientList(){
-  //   this.ingredientForm = this.formBuilder.group({
-  //       label: [this.cocktail.label, Validators.required]
-  //     });
-  //   }
-
-  //   get ingredientArray(): FormArray{
-  //     return this.editForm.get('ingredientList') as FormArray
-
-  //   }
-
     update(){
       this.editFormCocktail = this.editForm.value
       this.cocktailService.update(this.config.data.id, this.editFormCocktail)
       this.ref.close()
-
-      console.log(this.cocktail.id, this.config.data.id)
+      console.log(this.cocktail)
     }
   
 }

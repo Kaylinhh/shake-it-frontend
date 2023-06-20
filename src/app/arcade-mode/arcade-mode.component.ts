@@ -21,9 +21,11 @@ export class ArcadeModeComponent implements OnInit {
   label!: string;
   shakerUrl: string = "../assets/shaker.png"
 
+
+
   constructor(private ingredientService: IngredientService,
               private cocktailService: CocktailService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
 
@@ -52,6 +54,7 @@ export class ArcadeModeComponent implements OnInit {
       this.ingredientList.push(this.draggedIngredient)
       this.draggedIngredient = null;
     }
+    console.log(this.draggedIngredient)
   }
 
   dragEnd(){
@@ -60,6 +63,7 @@ export class ArcadeModeComponent implements OnInit {
 
   add(){
     this.cocktailService.create(this.cocktail).subscribe((cocktailCreated: Cocktail) => {
+      console.log(cocktailCreated)
     })
   }
 

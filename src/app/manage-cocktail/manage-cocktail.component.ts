@@ -23,43 +23,43 @@ export class ManageCocktailComponent {
   columns!: Column[];
 
   constructor(private cocktailService: CocktailService,
-              private dialogService: DialogService) {}
+    private dialogService: DialogService) { }
 
   ngOnInit() {
-      this.cocktailService.getAll().subscribe((data) => {
-          this.cocktails = data;
-      });
-
-      this.columns = [
-          { field: 'id', header: 'id' },
-          { field: 'label', header: 'label' },
-          { field: '', header: ''}
-      ];
+    this.cocktailService.getAll().subscribe((data) => {
+      this.cocktails = data;
+      console.log(data)
+    });
+    this.columns = [
+      { field: 'id', header: 'id' },
+      { field: 'label', header: 'label' },
+      { field: '', header: '' }
+    ];
   }
 
-  openDeleteDialog(id: number){
+  openDeleteDialog(id: number) {
     const selectedCocktail: Cocktail[] = this.cocktails.filter(cocktail => cocktail.id === id)
     const [myCocktail] = selectedCocktail;
-     this.ref = this.dialogService.open(DeleteDialogComponent, {
+    this.ref = this.dialogService.open(DeleteDialogComponent, {
       header: 'Delete your cocktail',
       data: {
         id: myCocktail.id,
         label: myCocktail.label,
         ingredientList: myCocktail.ingredientList
       }
-     });
+    });
   }
 
-  openEditDialog(id: number){
+  openEditDialog(id: number) {
     const selectedCocktail: Cocktail[] = this.cocktails.filter(cocktail => cocktail.id === id)
     const [myCocktail] = selectedCocktail;
-     this.ref = this.dialogService.open(EditDialogComponent, {
+    this.ref = this.dialogService.open(EditDialogComponent, {
       header: 'Update your cocktail',
       data: {
         id: myCocktail.id,
         label: myCocktail.label,
         ingredientList: myCocktail.ingredientList
       }
-     });
+    });
   }
 }

@@ -1,9 +1,8 @@
 <h1>Create your own cocktail!</h1>
-<button (click)="log()">CONSOLE.LOG</button>
 
 <div class="flex flex-col space-x-32">
     <div class="">
-        <ul>
+        <ul class="flex">
             <li *ngFor="let ingredient of ingredientList$ | async" pDraggable (onDragStart)="dragStart(ingredient)"
                 (onDragEnd)="dragEnd()">
                 {{ ingredient.label }}
@@ -14,18 +13,19 @@
 
     <div>
 
-        <p-card pDroppable (onDrop)="drop()">
-            <div>Ici la card du cocktail</div>
-            <p>Ici l'icon du shaker</p>
-
-            <input type="text" pInputText [(ngModel)]="cocktail.label" />
+        <div class="w-44 m-auto">
+        <p-card pDroppable (onDrop)="drop()" class="flex-col">
+            <div>Drag your ingredient and drop it in the shaker!</div>
+                <img [src]="shakerUrl" class="w-28">
+            <input class="" type="text" pInputText [(ngModel)]="cocktail.label" placeholder="Insert cocktail name" />
             <ul>
-                <li *ngFor="let ingredient of cocktail.ingredientList">
+                <li styleClass="" *ngFor="let ingredient of cocktail.ingredientList">
                     {{ingredient.label}}
                 </li>
             </ul>
             <p-button (onClick)="add()">Shake it!</p-button>
         </p-card>
+    </div>
 
     </div>
 </div>

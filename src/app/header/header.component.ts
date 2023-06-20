@@ -9,15 +9,19 @@ import { MenuItem } from 'primeng/api';
 export class HeaderComponent implements OnInit {
 
   items: MenuItem[] | undefined;
+  activeItem: MenuItem | undefined;
 
 ngOnInit(): void {
   this.items = [
-    {label: 'Home', icon: 'pi pi-home'},
-    { label: 'Calendar', icon: 'pi pi-fw pi-calendar' },
-    { label: 'Edit', icon: 'pi pi-fw pi-pencil' },
-    { label: 'Documentation', icon: 'pi pi-fw pi-file' },
+    {label: 'Home', icon: 'pi pi-home', routerLink: 'home'},
+    { label: 'Story Mode', icon: 'pi pi-fw pi-book', routerLink: 'story' },
+    { label: 'Arcade Mode', icon: 'pi pi-fw pi-palette', routerLink: 'arcade' },
+    { label: 'Manage Cocktails', icon: 'pi pi-fw pi-pencil', routerLink: 'manage' },
     { label: 'Settings', icon: 'pi pi-fw pi-cog' }
   ]
+
+  this.activeItem = this.items[0];
+
 }
 
 

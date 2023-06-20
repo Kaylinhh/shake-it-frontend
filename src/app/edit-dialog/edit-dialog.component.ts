@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl, Form } from '@angular/forms';
 import { Cocktail } from '../shared/models/cocktail.model';
 import { Ingredient } from '../shared/models/ingredient.model';
 import { CocktailService } from '../shared/services/cocktail.service';
@@ -13,6 +13,7 @@ import { DialogService, DynamicDialogRef, DynamicDialogConfig } from 'primeng/dy
 export class EditDialogComponent implements OnInit {
 
   editForm!: FormGroup;
+  ingredientForm!: FormGroup;
   cocktail!: Cocktail;
   ingredient!: Ingredient;
   ingredientList: Ingredient[] = [];
@@ -38,19 +39,26 @@ export class EditDialogComponent implements OnInit {
   private initEditForm(): void {
     this.editForm = this.formBuilder.group({
       label: [this.cocktail.label, [Validators.required]],
-      ingredientList: this.formBuilder.array([])
+      ingredientList: this.formBuilder.array([      
+        this.initIngredientList()
+      ])
     })
-    this.initIngredientList()
-    console.log(this.editForm.value)
   }
 
   initIngredientList(){
-    const ingredientList = this.editForm.get('ingredientList') as FormArray;
-    this.cocktail.ingredientList.forEach((ingredient) => {
-      ingredientList.push(this.formBuilder.group({
-        id: [ingredient.id],
-        label: [ingredient.label, Validators.required]
-      }))
-    })
-  }
+    this.ingredientForm = this.formBuilder.group({
+        label: [this.cocktail.label, Validators.required]
+      });
+    }
+
+    get ingredientArray(): FormArray{
+      return this.editForm.get('ingredientList') as FormArray
+
+    }
+
+    addIngredient(): void {
+      this.ingredientArray.push(this.ingredientArray)
+      console.log(this.editForm.value)
+    }
+  
 }

@@ -14,10 +14,7 @@
                     {{ rowData[col.field] }}
                 </div>
                 <ng-template #isLastCell>
-                    <p-button (onClick)="openEditDialog(rowData[columns[0].field])">
-                        <i class="pi pi-file-edit"></i>
-                    </p-button>
-                    <p-button class="">
+                    <p-button (onClick)="openDeleteDialog(rowData[columns[0].field])">
                         <i class="pi pi-trash"></i>
                     </p-button>
                 </ng-template>

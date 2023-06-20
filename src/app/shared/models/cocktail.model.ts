@@ -3,9 +3,9 @@ import { Ingredient } from "./ingredient.model";
 
 export class Cocktail {
     constructor(
+        public id: number,
         public label: string,
         public ingredientList: Ingredient[],
-        public category?: Category,
-        public id?: number
+        public category?: Category
     ){}
 }

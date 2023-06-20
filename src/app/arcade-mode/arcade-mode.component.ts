@@ -20,6 +20,7 @@ export class ArcadeModeComponent implements OnInit {
   cocktail!: Cocktail;
   formGroup!: FormGroup;
   label!: string;
+  shakerUrl: string = "../assets/shaker.png"
 
   constructor(private ingredientService: IngredientService,
               private cocktailService: CocktailService
@@ -38,6 +39,7 @@ export class ArcadeModeComponent implements OnInit {
 
   cocktailInit() {
     this.cocktail = {
+      id: 0,
       label: "",
       ingredientList: []
     }

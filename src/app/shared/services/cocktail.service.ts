@@ -30,5 +30,7 @@ import { environment } from "src/environments/environment.development";
 
     delete(id: number): void {
         const url: string = `${environment.apiUrl}${environment.endpoints.deleteCocktail}${id}`
-        this.http.delete(url)
+        this.http.delete(url)  .subscribe((): void => {
+            this.getAll().subscribe()
+        })
     }  }

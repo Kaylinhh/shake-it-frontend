@@ -25,12 +25,14 @@ import { environment } from "src/environments/environment.development";
 
     update(id: number, cocktail: Cocktail): void {
         const url: string = `${environment.apiUrl}${environment.endpoints.updateCocktail}${id}`
-        this.http.put(url, cocktail)
+        this.http.put(url, cocktail).subscribe((): void => {
+            this.getAll().subscribe()
+        })
     }
 
     delete(id: number): void {
         const url: string = `${environment.apiUrl}${environment.endpoints.deleteCocktail}${id}`
-        this.http.delete(url)  .subscribe((): void => {
+        this.http.delete(url).subscribe((): void => {
             this.getAll().subscribe()
         })
     }  }

@@ -48,6 +48,18 @@ export class ManageCocktailComponent {
         ingredientList: myCocktail.ingredientList
       }
      });
-     
+  }
+
+  openEditDialog(id: number){
+    const selectedCocktail: Cocktail[] = this.cocktails.filter(cocktail => cocktail.id === id)
+    const [myCocktail] = selectedCocktail;
+     this.ref = this.dialogService.open(EditDialogComponent, {
+      header: 'Update your cocktail',
+      data: {
+        id: myCocktail.id,
+        label: myCocktail.label,
+        ingredientList: myCocktail.ingredientList
+      }
+     });
   }
 }

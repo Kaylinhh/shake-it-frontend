@@ -5,7 +5,6 @@ import { CocktailService } from '../shared/services/cocktail.service';
 import { Cocktail } from '../shared/models/cocktail.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { BindService } from '../shared/services/bind.service';
 
 @Component({
   selector: 'app-arcade-mode',
@@ -27,9 +26,7 @@ export class ArcadeModeComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    // this.ingredientService.getAll().subscribe(data => {
-    //   this.ingredientList = data
-    // })
+
     this.ingredientList$ = this.ingredientService.getAll()
     this.cocktailInit();
     this.formGroup = new FormGroup({
@@ -51,13 +48,9 @@ export class ArcadeModeComponent implements OnInit {
 
   drop(){
     if (this.draggedIngredient) {
-      // let draggedIngredientIndex = this.findIndex(this.draggedIngredient);
       this.cocktail.ingredientList = [...(this.cocktail.ingredientList as Ingredient[]), this.draggedIngredient];
-      // this.ingredientList$ = this.ingredientList?.filter((val, i) => i != draggedIngredientIndex)
       this.ingredientList.push(this.draggedIngredient)
       this.draggedIngredient = null;
-
-      
     }
   }
 
@@ -65,20 +58,8 @@ export class ArcadeModeComponent implements OnInit {
     this.draggedIngredient = null;
   }
 
-  // findIndex(ingredient: Ingredient){
-  //   let index = -1;
-  //   for (let i = 0; i < (this.ingredientList as Ingredient[]).length; i++){
-  //     if (ingredient.id === (this.ingredientList as Ingredient[])[i].id){
-  //       index = i;
-  //       break;
-  //     }
-  //   }
-  //   return index;
-  // }
-
   add(){
     this.cocktailService.create(this.cocktail).subscribe((cocktailCreated: Cocktail) => {
-      console.log("banane", cocktailCreated)
     })
   }
 

@@ -17,6 +17,7 @@ export class EditDialogComponent implements OnInit {
   cocktail!: Cocktail;
   ingredient!: Ingredient;
   ingredientList: Ingredient[] = [];
+  editFormCocktail!: Cocktail;
 
   constructor(
     private cocktailService: CocktailService,
@@ -32,33 +33,30 @@ export class EditDialogComponent implements OnInit {
     this.initEditForm()
   }
 
-  log(){
-    console.log(this.dialogService)
-  }
-
   private initEditForm(): void {
     this.editForm = this.formBuilder.group({
       label: [this.cocktail.label, [Validators.required]],
-      ingredientList: this.formBuilder.array([      
-        this.initIngredientList()
-      ])
+      ingredientList: [this.cocktail.ingredientList]
     })
   }
 
-  initIngredientList(){
-    this.ingredientForm = this.formBuilder.group({
-        label: [this.cocktail.label, Validators.required]
-      });
-    }
+  // initIngredientList(){
+  //   this.ingredientForm = this.formBuilder.group({
+  //       label: [this.cocktail.label, Validators.required]
+  //     });
+  //   }
 
-    get ingredientArray(): FormArray{
-      return this.editForm.get('ingredientList') as FormArray
+  //   get ingredientArray(): FormArray{
+  //     return this.editForm.get('ingredientList') as FormArray
 
-    }
+  //   }
 
-    addIngredient(): void {
-      this.ingredientArray.push(this.ingredientArray)
-      console.log(this.editForm.value)
+    update(){
+      this.editFormCocktail = this.editForm.value
+      this.cocktailService.update(this.config.data.id, this.editFormCocktail)
+      this.ref.close()
+
+      console.log(this.cocktail.id, this.config.data.id)
     }
   
 }

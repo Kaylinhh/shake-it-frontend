@@ -1,0 +1,12 @@
+<form [formGroup]="loginForm" (ngSubmit)="login(user)">
+
+    <span class="p-float-label">
+        <input type="email" pInputText id="email" formControlName="email" />
+        <label htmlFor="email">e-mail</label>
+    </span>
+    
+    <p-password formControlName="password" [feedback]="false"></p-password>
+
+    <button type="submit" [disabled]="!loginForm.valid">Envoyer</button>
+
+</form>

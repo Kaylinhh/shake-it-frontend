@@ -6,7 +6,7 @@ import { DragDropModule } from 'primeng/dragdrop';
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
-
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
     declarations: [],
@@ -17,7 +17,8 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
         DragDropModule,
         DialogModule,
         TableModule,
-        DynamicDialogModule
+        DynamicDialogModule,
+        PasswordModule
     ],
     providers: [DialogService],
     exports: [
@@ -27,7 +28,8 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
         DragDropModule,
         DialogModule,
         TableModule,
-        DynamicDialogModule
+        DynamicDialogModule,
+        PasswordModule
         ]
   })
   export class PrimengModule { }

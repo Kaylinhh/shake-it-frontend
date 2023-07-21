@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ManageCocktailComponent } from './manage-cocktail/manage-cocktail.component';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
     HomeComponent,
     ManageCocktailComponent,
     EditDialogComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,18 @@
+<form [formGroup]="registerForm" (ngSubmit)="register(user)">
+
+    <span class="p-float-label">
+        <input type="email" pInputText id="email" formControlName="email" />
+        <label htmlFor="email">e-mail</label>
+    </span>
+
+    <span class="p-float-label">
+        <input type="text" pInputText id="username" formControlName="username" />
+        <label htmlFor="username">Username</label>
+    </span>
+
+    <p-password formControlName="password" [feedback]="false"></p-password>
+    <p-password formControlName="passwordVerification" [feedback]="false"></p-password>
+
+    <button type="submit" [disabled]="!registerForm.valid">Envoyer</button>
+
+</form>

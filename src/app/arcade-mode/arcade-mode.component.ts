@@ -65,6 +65,7 @@ export class ArcadeModeComponent implements OnInit {
     this.cocktailService.create(this.cocktail).subscribe((cocktailCreated: Cocktail) => {
       console.log(cocktailCreated)
     })
+    this.cocktailInit();
   }
 
   log() {

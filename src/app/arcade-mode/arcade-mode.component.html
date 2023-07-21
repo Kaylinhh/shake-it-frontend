@@ -3,7 +3,6 @@
     <p-header class="m-auto">Create your own cocktail!</p-header>
     <p class="m-auto">Drag your ingredient and drop it in the shaker!</p>
 </div>
-
 <div class="flex flex-col">
     <div class="">
         <div class="flex flex-wrap space-x-4">
@@ -12,14 +11,12 @@
                 <li pDraggable="ingredientList$" (onDragStart)="dragStart(ingredient)" (onDragEnd)="dragEnd()">
                     <img [src]="ingredient.icon" [alt]="ingredient.label" [pTooltip]="ingredient.label" tooltipPosition="bottom" class="w-28" />
                 </li>
-
             </ul>
         </div>
 
     </div>
 
     <div>
-
         <div class="w-60 m-auto">
         <p-card pDroppable="ingredientList$" (onDrop)="drop()" class="flex flex-col">
                 <img [src]="shakerUrl" class="w-40 self-center">
@@ -35,7 +32,6 @@
             <p-button (onClick)="add()" class="self-center">Shake it!</p-button>
         </p-card>
     </div>
-
     </div>
 </div>
 </div>
